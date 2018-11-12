@@ -32,38 +32,8 @@ void Test(int a, int b)
 	//return &c;
 }
 
-bool is_prime(const int & number)
-{
-	if (number < 2)
-	{
-		return false;
-	}
-
-	int n = number / 2 + 1;
-
-	for (int i = 2; i < n; i++)
-	{
-		if (number%i == 0)
-		{
-			return false;
-		}
-	}
-	return true;
-}
-
 int main()
 {
-	bool bk = is_prime(2);
-
-
-	Object* obnj = new Object();
-	Actor* actor = new Actor();
-
-	ObjectController objCont;
-	objCont.Save();
-
-
-
 	//-------------------------------------------------
 
 	std::shared_ptr<Object> obj1(new Object());

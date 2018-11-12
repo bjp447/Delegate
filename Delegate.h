@@ -1,3 +1,11 @@
+/*
+* Created by Brennan Pohl on 10/12/18.
+* Copyright © 2018 Brennan Pohl. All rights reserved.
+*
+*
+*
+*/
+
 #pragma once
 #ifndef _DELEGATE_
 #define _DELEGATE_
@@ -26,7 +34,7 @@
 //* First argument is the disired delegate name, followed by any amount of parameters.
 //* Format: (DelegateName, type (optional), ...)
 #define MULTI_CAST_DELEGATE(DelegateName, ... ) \
-	using DelegateName = DLG::MultiCastDelegate<__VA_ARGS__ >;
+	using DelegateName = DLG::DynamicMultiCastDelegate<__VA_ARGS__ >;
 
 #pragma endregion
 
@@ -281,7 +289,7 @@ namespace DLG
 #pragma region MultiCast
 	//* Format: <'arguement type' (optional), ...>
 	template <typename... Params>
-	class MultiCastDelegate
+	class DynamicMultiCastDelegate
 	{
 	private:
 		using FreeFunc = void(*)(Params...);
@@ -298,9 +306,9 @@ namespace DLG
 		std::vector<DelegateBase<void, Params...>*> Member_Binds;
 
 	public:
-		MultiCastDelegate() {};
+		DynamicMultiCastDelegate() {};
 
-		~MultiCastDelegate()
+		~DynamicMultiCastDelegate()
 		{
 			Clear();
 		}
